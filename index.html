@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>SA App</title>
+  <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+  <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+
+<body>
+  <div class="table">
+    <webview id="table"
+      src="https://docs.google.com/spreadsheets/d/1-UBKWKvO3T0vwpxCCbXzY8OalHoYKwQFASBiFtXxMs0/edit#gid=111019831"
+      autosize="on" style="width:870px; height:calc(100vh + 127px);"></webview>
+  </div>
+  <div class="conference">
+    <webview id="conference" src="https://hello.freeconference.com/conf/call/6861278"
+      preload="./conference-injection.js" autosize="on" style="width:100%; height:80vh"></webview>
+  </div>
+  <div class="timer">
+    <webview id="timer" src="https://www.google.com/search?q=timer" preload="./timer-injection.js" autosize="on"
+      style="width:100%; height:20vh"></webview>
+  </div>
+</body>
+
+</html>
