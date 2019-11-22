@@ -1,25 +1,19 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow } = require('electron');
 
-
-function createWindow () {
+function createWindow() {
   // Create the browser window.
-  let win = new BrowserWindow({
-    // width: 800,
-    // height: 600,
+  const win = new BrowserWindow({
     webPreferences: {
       nodeIntegration: true,
-      webviewTag : true,
+      webviewTag: true,
     }
-  })
+  });
+  win.loadFile('index.html');
+  win.maximize();
 
-  // and load the index.html of the app.
-  win.loadFile('index.html')
-  // win.loadURL('https://hello.freeconference.com/conf/call/6861278')
+  win.webContents.on('did-finish-load', () => {
+    win.show();
+  });
 }
 
-// let win = new BrowserWindow({ width: 800, height: 1500 })
-
-// let contents = win.webContents
-// console.log(contents)
-
-app.on('ready', createWindow)
+app.on('ready', createWindow);
