@@ -3,6 +3,8 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
+  overflow: hidden;
+  border-top: 1px solid grey;
 }
 .table {
   display: block;
@@ -10,20 +12,20 @@ body {
   width:560px;
   height:calc(100vh + 127px);
   float: left;
-  background-color: red;
 }
 .conference {
   left: 560px;
   width: calc(100% - 560px);
   height: 80vh;
-  background-color: green;
   position: relative;
+  border-left: 1px solid grey;
+  border-bottom: 1px solid grey;
 }
 
 .timer {
   left: 560px;
   width: calc(100% - 560px);
   height: 20vh;
-  background-color: blue;
   position: relative;
+  border-left: 1px solid grey;
 }
