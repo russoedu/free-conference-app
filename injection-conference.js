@@ -2,9 +2,7 @@
 /* eslint-disable spaced-comment */
 /* eslint-disable no-console */
 const usersCSV = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQpVYRWrMtFUF9ZGCWzuDgcSBBUT1ylBoTpQqJiRmKvAP0Xii0-5W97HbNhfzeSuhWiwqwMxG1uJO_n/pub?gid=111019831&single=true&output=csv'
-const participantsSelector = '#app > div > div:nth-child(1) > div > div > div.call-sidebar > div.participant-list > div'
-//                    #app > div > div:nth-child(1) > div > div > div.call-sidebar > div.participant-list > div > div.item > div.item__content
-
+const participantsSelector = '#app > div > div:nth-child(1) > div > div > div.call-sidebar > div.participant-list > div';
 const speakerSelector = '#app > div > div:nth-child(1) > div > div > div.call-main > div:nth-child(3) > div.call-media.call-media--overlay > div > div > div';
 let participantsTranslation = null;
 

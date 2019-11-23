@@ -9,9 +9,9 @@ function createWindow() {
     }
   });
   win.loadFile('index.html');
-  win.maximize();
 
   win.webContents.on('did-finish-load', () => {
+    win.maximize();
     win.show();
   });
 }
