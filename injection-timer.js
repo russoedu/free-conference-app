@@ -8,7 +8,7 @@ setTimeout(function removeFromPage() {
     }
     #cst, #sfcnt, #top_nav, #searchform, .srg, #appbar, #rso > div:nth-child(3) > div,
       #gsr > div:nth-child(2), #search > div > h1, #extrares, #act-tab-header, #act-fbk-row, #rso > div:nth-child(2),
-      #center_col > div:nth-child(5), #footcnt, #navcnt {
+      #center_col > div:nth-child(5), #footcnt, #navcnt, #taw > div:nth-child(2) > div:nth-child(3) {
       display:none!important;
     }
     #cnt, #res {

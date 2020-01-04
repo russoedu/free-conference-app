@@ -1,11 +1,13 @@
 {
-  "name": "sa-app",
+  "name": "free-conference-app",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "electron ./src"
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
   },
-  "description": "SA support app",
+  "description": "Free Conference support app",
   "repository": {
     "type": "git",
     "url": "https://github.com/russoedu/sa-app.git"
@@ -14,9 +16,18 @@
     "name": "Eduardo Russo",
     "email": "russoedu@gmail.com"
   },
+  "build": {
+    "appId": "russoedu.freeconference",
+    "win": {
+      "target": "NSIS",
+      "icon": "buildResources/icon.ico"
+    },
+    "productName": "FreeConference App"
+  },
   "license": "MIT",
   "devDependencies": {
     "electron": "^7.1.2",
+    "electron-builder": "^21.2.0",
     "eslint": "^6.1.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-airbnb-base": "^14.0.0",
