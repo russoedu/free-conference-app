@@ -18,11 +18,17 @@
   },
   "build": {
     "appId": "russoedu.freeconference",
+    "productName": "FreeConference App",
+    "copyright": "Copyright © 2020 Eduardo Russo",
     "win": {
       "target": "NSIS",
       "icon": "buildResources/icon.ico"
     },
-    "productName": "FreeConference App"
+    "dmg": {
+      "iconSize": 80,
+      "iconTextSize": 12,
+      "title": "Free Conference App 1.0"
+    }
   },
   "license": "MIT",
   "devDependencies": {

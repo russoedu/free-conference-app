@@ -1,63 +1,69 @@
-/* eslint-disable no-param-reassign */
-/* eslint-disable spaced-comment */
-/* eslint-disable no-console */
-const usersCSV = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQpVYRWrMtFUF9ZGCWzuDgcSBBUT1ylBoTpQqJiRmKvAP0Xii0-5W97HbNhfzeSuhWiwqwMxG1uJO_n/pub?gid=111019831&single=true&output=csv'
-const participantsSelector = '#app > div > div:nth-child(1) > div > div > div.call-sidebar > div.participant-list > div';
-const speakerSelector = '#app > div > div:nth-child(1) > div > div > div.call-main > div:nth-child(3) > div.call-media.call-media--overlay > div > div > div';
-let participantsTranslation = null;
+const Http = new XMLHttpRequest()
+const config = require('./config')
 
-const Http = new XMLHttpRequest();
-const url = usersCSV;
-Http.open('GET', url);
-Http.send();
+let participantsList = []
 
-Http.onreadystatechange = (e) => {
-  const csv = Http.responseText;
-  const arr = csv.split('\n');
-  participantsTranslation = [];
-  const headers = arr[0].split(',');
+function getParticipantsList() {
+  const Http = new XMLHttpRequest()
+  const usersCSV = `${config.conferenceUrl}&_=${new Date().getTime()}`
+  Http.open("GET", usersCSV)
+  Http.setRequestHeader('cache-control', 'no-cache, must-revalidate, post-check=0, pre-check=0')
 
-  for (let k = 2; k < arr.length - 5; k += 1) {
-    const data = arr[k].split(',');
-    const obj = {};
-    for (let l = 0; l < 2; l += 1) {
-      obj[headers[l]] = data[l];
+  let participants = null
+  Http.send()
+  return new Promise((result, error) =>{
+    Http.onreadystatechange = () => {
+      let csv = Http.responseText
+      let arr = csv.split('\n')
+
+      participants = []
+      const headers = arr[0].split(',')
+      for(var i = 2; i < arr.length - 3; i++) {
+        const data = arr[i].split(',')
+        const obj = {}
+        for(let j = 0; j < 2; j++) {
+          obj[headers[j]] = data[j]
+        }
+        participants.push(obj)
+      }
+
+      if (participants.length > 0) {
+        result(participants)
+      }
     }
-    participantsTranslation.push(obj);
-  }
-  participantsTranslation.push({ Phone: 'James P', Name: 'HOST' });
-  console.log(participantsTranslation);
-};
+  })
+}
 
 // Wait until the participants panel is open
-setTimeout(function waitParticipantsPanel() {
-  if (document.querySelector(participantsSelector)) {
-    const participants = document.querySelector(participantsSelector).getElementsByClassName('item__label');
-    participants.forEach((element) => {
-      participantsTranslation.forEach((translation) => {
-        if (element.innerHTML === translation.Phone) {
-          element.innerHTML += ` - ${translation.Name}`;
-        }
-      });
-    });
-    setTimeout(waitParticipantsPanel, 4000);
+setTimeout(async function waitParticipantsPanel() {
+  participantsList = await getParticipantsList()
+  if (document.querySelector(config.participantsSelector)) {
+      const participants = document.querySelector(config.participantsSelector).getElementsByClassName(config.participantClassName)
+      participants.forEach(element => {
+          const splited = element.innerHTML.split(config.participantSeparator)[0]
+          participantsList.forEach(translation => {
+              if(splited === translation.Phone) {
+                  element.innerHTML = `${translation.Phone}${config.participantSeparator}${translation.Name}`
+              }
+          })
+      })
+      setTimeout(waitParticipantsPanel, 4000)
   } else {
-    setTimeout(waitParticipantsPanel, 1000);
+      setTimeout(waitParticipantsPanel, 1000)
   }
-}, 5000);
+}, 5000)
 
-setTimeout(function waitSpeaker() {
-  if (document.querySelector(speakerSelector)) {
-    const speaker = document.querySelector(speakerSelector).getElementsByClassName('avatar__full-name')[0];
-    console.log(speaker.innerHTML);
-    participantsTranslation.forEach((translation) => {
-      if (speaker.innerHTML === translation.Phone) {
-        console.log(speaker, translation.Phone, translation.Name);
-        speaker.innerHTML += `<br/>${translation.Name}`;
-      }
-    });
-    setTimeout(waitSpeaker, 900);
-  } else {
-    setTimeout(waitSpeaker, 800);
-  }
-}, 5200);
+setTimeout(async function waitSpeaker() {
+    if (document.querySelector(config.speakerSelector)) {
+        const speaker = document.querySelector(config.speakerSelector).getElementsByClassName(config.speakerClassName)[0]
+        participantsList.forEach(translation => {
+            const splited = speaker.innerHTML.split(config.speakerSeparator)[0]
+            if(splited === translation.Phone) {
+                speaker.innerHTML = `${translation.Phone}${config.speakerSeparator}${translation.Name}`
+            }
+        })
+        setTimeout(waitSpeaker, 900)
+    } else {
+        setTimeout(waitSpeaker, 800)
+    }
+}, 5200)
