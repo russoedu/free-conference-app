@@ -1,13 +1,3 @@
-// ==UserScript==
-// @name         Timer
-// @namespace    http://tampermonkey.net/
-// @version      0.1
-// @description  try to take over the world!
-// @author       You
-// @match        https://www.google.com/search?q=timer
-// @grant        none
-// ==/UserScript==
-
 setTimeout(function removeFromPage () {
   if (document.querySelector('#sfcnt')) {
     const style = document.createElement('STYLE')

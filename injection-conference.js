@@ -9,6 +9,9 @@ const speakerNameSeparator = `${config.speakerNameSeparator}`
 
 let participantsList = []
 
+/**
+ * Get the participants from the CSV
+ */
 function getParticipantsList () {
   const Http = new XMLHttpRequest()
   const usersCSV = `${config.csvUrl}&_=${new Date().getTime()}`
@@ -40,7 +43,9 @@ function getParticipantsList () {
   })
 }
 
-// Wait until the participants panel is open
+/**
+ * Add names to the participants panel
+ */
 setTimeout(async function waitParticipantsPanel () {
   participantsList = await getParticipantsList()
   if (document.querySelector(participantsSelector)) {
@@ -59,6 +64,9 @@ setTimeout(async function waitParticipantsPanel () {
   }
 }, 5000)
 
+/**
+ * Add names to the speaker
+ */
 setTimeout(async function waitSpeaker () {
   if (document.querySelector(speakerSelector)) {
     const speaker = document.querySelector(speakerSelector).getElementsByClassName(speakerClassName)[0]
