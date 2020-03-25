@@ -24,11 +24,12 @@
       "target": "NSIS",
       "icon": "buildResources/icon.ico"
     },
+    "mac": {
+      "icon": "./buildResources/icon.png",
+      "target": "dmg"
+    },
     "dmg": {
-      "iconSize": 80,
-      "iconTextSize": 12,
-      "title": "Free Conference App 1.0",
-      "icon": "buildResources/icon.icns"
+      "title": "Free Conference App 1.0"
     }
   },
   "license": "MIT",
