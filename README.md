@@ -15,6 +15,8 @@ To run the app you need to configure the Google Sheet that will be displayed on 
 
 ![publish to the web](./media/publish.png)
 
+The sheet needs to have the first two columns set as Phone and Name. The rest of the columns don't mather. You can use this spreadsheet as a base for your meetings: https://docs.google.com/spreadsheets/d/1GrR8AM1DJQOzL-v3fLUJtxaIi6P9dD44hz-IBGbmKk4/. Just make a copy and follow the instructions to use it on the app.
+
 Please make sure the configuration of the publishing is set to `CSV`
 
 ![CSV config](./media/publish-config.png)
