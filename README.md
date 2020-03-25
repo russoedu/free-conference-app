@@ -4,6 +4,10 @@ Creates a single space to help you managing people on the conference and visuali
 
 ![screenshot](./media/screenshot.png)
 
+## Download
+
+Download the app on [the packages page](https://github.com/russoedu/free-conference-app/releases)
+
 ## Configuration
 To run the app you need to configure the Google Sheet that will be displayed on the left size by clicking on `file` and then `Publish to the web`
 
