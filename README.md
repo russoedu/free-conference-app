@@ -1,3 +1,4 @@
+<img src="./media/icon.png" width="128" height="128" />
 # FreeConference App
 
 Creates a single space to help you managing people on the conference and visualising speaker times
