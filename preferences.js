@@ -1,172 +1,74 @@
-'use strict'
-
 const electron = require('electron')
 const app = electron.app
 const path = require('path')
-const os = require('os')
 const ElectronPreferences = require('electron-preferences')
 
 const preferences = new ElectronPreferences({
   dataStore: path.resolve(app.getPath('userData'), 'preferences.json'),
   defaults: {
-    notes: {
-      folder: path.resolve(os.homedir(), 'Notes')
-    },
-    markdown: {
-      auto_format_links: true,
-      show_gutter: false
-    },
-    preview: {
-      show: true
-    },
-    drawer: {
-      show: true
+    general: {
+      participantNameSeparator: '•',
+      speakerNameSeparator: '<br/>'
     }
   },
   onLoad: (data) => {
-    console.log('data', data)
-
     return data
-  },
-  afterLoad: ({ preferences }) => {
-    console.log('afterLoad', preferences)
   },
   webPreferences: {
     devTools: true
   },
   sections: [
     {
-      id: 'about',
-      label: 'About You',
-      icon: 'single-01',
+      id: 'general',
+      label: 'Free Conference App',
+      icon: 'settings-gear-63',
       form: {
         groups: [
           {
-            label: 'About You',
+            label: 'Spreadsheet',
             fields: [
               {
-                label: 'First Name',
-                key: 'first_name',
+                label: 'Spreadsheet URL',
+                key: 'spreadsheetUrl',
                 type: 'text',
-                help: 'What is your first name?'
+                help: 'Something like https://docs.google.com/spreadsheets/d/1-XXXXXXXXXXXXXXXXXXXXXXXXX/edit#gid=123123',
+                inputType: 'url'
               },
               {
-                label: 'Last Name',
-                key: 'last_name',
+                label: 'CSV URL',
+                key: 'csvUrl',
                 type: 'text',
-                help: 'What is your last name?'
-              },
+                help: 'You need to "Publish to the web" for it to work. It looks like https://docs.google.com/spreadsheets/d/e/2PACX-XXXXXXXXXXXXX-XXXXXX/pub?gid=123123&single=true&output=csv',
+                inputType: 'url'
+              }
+            ]
+          },
+          {
+            label: 'Free conference',
+            fields: [
               {
-                label: 'Gender',
-                key: 'gender',
-                type: 'dropdown',
-                options: [
-                  { label: 'Male', value: 'male' },
-                  { label: 'Female', value: 'female' },
-                  { label: 'Unspecified', value: 'unspecified' }
-                ],
-                help: 'What is your gender?'
-              },
-              {
-                label: 'Age',
-                key: 'age',
+                label: 'Conference ID',
+                key: 'conferenceId',
                 type: 'text',
+                help: 'Something like 1234567',
                 inputType: 'number'
-              },
-              {
-                label: 'Which of the following foods do you like?',
-                key: 'foods',
-                type: 'checkbox',
-                options: [
-                  { label: 'Ice Cream', value: 'ice_cream' },
-                  { label: 'Carrots', value: 'carrots' },
-                  { label: 'Cake', value: 'cake' },
-                  { label: 'Spinach', value: 'spinach' }
-                ],
-                help: 'Select one or more foods that you like.'
-              },
-              {
-                label: 'Coolness',
-                key: 'coolness',
-                type: 'slider',
-                min: 0,
-                max: 9001
-              },
-              {
-                label: 'Eye Color',
-                key: 'eye_color',
-                type: 'color',
-                format: 'hex',
-                help: 'Your eye color'
-              },
-              {
-                label: 'Hair Color',
-                key: 'hair_color',
-                type: 'color',
-                format: 'rgb',
-                help: 'Your hair color'
               }
             ]
-          }
-        ]
-      }
-    },
-    {
-      id: 'notes',
-      label: 'Notes',
-      icon: 'folder-15',
-      form: {
-        groups: [
+          },
           {
-            label: 'Stuff',
+            label: 'Interface',
             fields: [
               {
-                label: 'Read notes from folder',
-                key: 'folder',
-                type: 'directory',
-                help: 'The location where your notes will be stored.'
-              },
-              {
-                heading: 'Important Message',
-                content: '<p>The quick brown fox jumps over the long white fence. The quick brown fox jumps over the long white fence. The quick brown fox jumps over the long white fence. The quick brown fox jumps over the long white fence.</p>',
-                type: 'message'
-              }
-            ]
-          }
-        ]
-      }
-    },
-    {
-      id: 'space',
-      label: 'Other Settings',
-      icon: 'spaceship',
-      form: {
-        groups: [
-          {
-            label: 'Other Settings',
-            fields: [
-              {
-                label: 'Phone Number',
-                key: 'phone_number',
+                label: 'Participant list separator',
+                key: 'participantNameSeparator',
                 type: 'text',
-                help: 'What is your phone number?'
+                help: 'The separator between the phone and the name'
               },
               {
-                label: 'Foo or Bar?',
-                key: 'foobar',
-                type: 'radio',
-                options: [
-                  { label: 'Foo', value: 'foo' },
-                  { label: 'Bar', value: 'bar' },
-                  { label: 'FooBar', value: 'foobar' }
-                ],
-                help: 'Foo? Bar?'
-              },
-              {
-                label: 'Shortcut',
-                key: 'shortcut',
-                type: 'accelerator',
-                help: 'A keyboard shortcut'
+                label: 'Speaker separator',
+                key: 'speakerNameSeparator',
+                type: 'text',
+                help: 'The separator between the phone and the name'
               }
             ]
           }

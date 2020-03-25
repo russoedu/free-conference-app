@@ -10,6 +10,8 @@ function createWindow () {
       webviewTag: true
     }
   })
+  const test = Menu.getApplicationMenu()
+  console.log(test.items[4].submenu.items[0].click.toString())
 
   const menu = Menu.buildFromTemplate(
     [
@@ -31,13 +33,55 @@ function createWindow () {
         ]
       },
       {
+        label: 'View',
+        submenu: [
+          {
+            label: 'Reload',
+            accelerator: 'CmdOrCtrl+R',
+            click: function (item, focusedWindow) {
+              if (focusedWindow) {
+                focusedWindow.reload()
+              }
+            }
+          },
+          {
+            label: 'Toggle Developer Tools',
+            accelerator: (function () {
+              if (process.platform === 'darwin') {
+                return 'Alt+Command+I'
+              } else {
+                return 'Ctrl+Shift+I'
+              }
+            })(),
+            click: function (item, focusedWindow) {
+              if (focusedWindow) {
+                focusedWindow.toggleDevTools()
+              }
+            }
+          }
+        ]
+      },
+      {
+        label: 'Window',
+        role: 'window',
+        submenu: [
+          {
+            label: 'Minimize',
+            accelerator: 'CmdOrCtrl+M',
+            role: 'minimize'
+          },
+          {
+            label: 'Close',
+            accelerator: 'CmdOrCtrl+W',
+            role: 'close'
+          }
+        ]
+      },
+      {
         label: 'About',
         submenu: [
           {
-            label: 'Copyright © 2020 Eduardo Russo'
-          },
-          {
-            label: 'Project page on GitHub',
+            label: 'View project on GitHub',
             click () {
               shell.openExternal('https://github.com/russoedu/free-conference-app/')
             }
@@ -46,9 +90,9 @@ function createWindow () {
       }
     ]
   )
-
   Menu.setApplicationMenu(menu)
   mainWindow.loadFile('index.html')
+
   mainWindow.webContents.on('did-finish-load', () => {
     mainWindow.maximize()
     mainWindow.show()

@@ -29,3 +29,9 @@ body {
   position: relative;
   border-left: 1px solid grey;
 }
+
+.preferences {
+  text-align: center;
+  font-family: sans-serif;
+  line-height: 4;
+}
