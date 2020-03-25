@@ -27,7 +27,8 @@
     "dmg": {
       "iconSize": 80,
       "iconTextSize": 12,
-      "title": "Free Conference App 1.0"
+      "title": "Free Conference App 1.0",
+      "icon": "buildResources/icon.icns"
     }
   },
   "license": "MIT",
