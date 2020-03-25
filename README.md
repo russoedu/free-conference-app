@@ -11,11 +11,13 @@ Creates a single space to help you managing people on the conference and visuali
 Download the app on [the packages page](https://github.com/russoedu/free-conference-app/releases)
 
 ## Configuration
-To run the app you need to configure the Google Sheet that will be displayed on the left size by clicking on `file` and then `Publish to the web`
+You will need a Google Sheets spreadsheet with at least two columns (Phone and Name). The rest of the columns don't mather.
+
+You can use [this spreadsheet](https://docs.google.com/spreadsheets/d/1GrR8AM1DJQOzL-v3fLUJtxaIi6P9dD44hz-IBGbmKk4/) as a base for your meetings. Just make a copy and follow the instructions below to use it on the app.
+
+To run the app you need to configure the Google Sheet that will be displayed on the left side by clicking on `file` and then `Publish to the web`
 
 ![publish to the web](./media/publish.png)
-
-The sheet needs to have the first two columns set as Phone and Name. The rest of the columns don't mather. You can use this spreadsheet as a base for your meetings: https://docs.google.com/spreadsheets/d/1GrR8AM1DJQOzL-v3fLUJtxaIi6P9dD44hz-IBGbmKk4/. Just make a copy and follow the instructions to use it on the app.
 
 Please make sure the configuration of the publishing is set to `CSV`
 
@@ -33,4 +35,4 @@ The required data are:
 
 ![configurations](./media/preferences.png)
 
-The app should start and work!
+The app is ready for your meetings!
