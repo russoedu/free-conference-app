@@ -26,6 +26,7 @@ function createWindow () {
           },
           {
             label: 'Preferences',
+            accelerator: 'CmdOrCtrl+,',
             click () {
               preferences.show()
             }
@@ -114,7 +115,3 @@ function reopenWindow () {
 app.on('ready', createWindow)
 app.on('window-all-closed', closeAllWindows)
 app.on('activate', reopenWindow)
-
-preferences.on('save', (preferences) => {
-  console.log('Preferences were saved.', JSON.stringify(preferences, null, 4))
-})

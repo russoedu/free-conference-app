@@ -14,9 +14,6 @@ const preferences = new ElectronPreferences({
   onLoad: (data) => {
     return data
   },
-  webPreferences: {
-    devTools: true
-  },
   sections: [
     {
       id: 'general',
@@ -31,14 +28,14 @@ const preferences = new ElectronPreferences({
                 label: 'Spreadsheet URL',
                 key: 'spreadsheetUrl',
                 type: 'text',
-                help: 'Something like https://docs.google.com/spreadsheets/d/1-XXXXXXXXXXXXXXXXXXXXXXXXX/edit#gid=123123',
+                help: 'The Google Sheets URL. example: https://docs.google.com/spreadsheets/d/1-XXXXXXXXXXXXXXXXXXXXXXXXX/edit#gid=123123',
                 inputType: 'url'
               },
               {
                 label: 'CSV URL',
                 key: 'csvUrl',
                 type: 'text',
-                help: 'You need to "Publish to the web" for it to work. It looks like https://docs.google.com/spreadsheets/d/e/2PACX-XXXXXXXXXXXXX-XXXXXX/pub?gid=123123&single=true&output=csv',
+                help: 'You need to configure the spreadsheet using "Publish to the web" for it to work. example: https://docs.google.com/spreadsheets/d/e/2PACX-XXXXXXXXXXXXX-XXXXXX/pub?gid=123123&single=true&output=csv',
                 inputType: 'url'
               }
             ]
@@ -50,7 +47,7 @@ const preferences = new ElectronPreferences({
                 label: 'Conference ID',
                 key: 'conferenceId',
                 type: 'text',
-                help: 'Something like 1234567',
+                help: 'The FreeConference PIN. example: 1234567',
                 inputType: 'number'
               }
             ]

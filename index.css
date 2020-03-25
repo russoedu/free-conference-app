@@ -4,7 +4,7 @@ body {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  border-top: 1px solid grey;
+  border-top: 1px solid #dcb28a;
 }
 .table {
   display: block;
@@ -18,8 +18,8 @@ body {
   width: calc(100% - 560px);
   height: calc(100vh - 154px);
   position: relative;
-  border-left: 1px solid grey;
-  border-bottom: 1px solid grey;
+  border-left: 1px solid #dcb28a;
+  border-top: 1px solid #dcb28a;
 }
 
 .timer {
@@ -27,11 +27,22 @@ body {
   max-width: 380px;
   height: 154px;
   position: relative;
-  border-left: 1px solid grey;
+  border-left: 1px solid #dcb28a;
 }
 
 .preferences {
   text-align: center;
   font-family: sans-serif;
   line-height: 4;
+}
+
+.button {
+  background-color: #ff7b00;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
 }
