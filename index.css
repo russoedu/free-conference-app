@@ -9,14 +9,14 @@ body {
 .table {
   display: block;
   position: fixed;
-  width:100%;
-  height:calc(100vh + 127px);
+  width:560px;
+  height:100vh;
   float: left;
 }
 .conference {
   left: 560px;
-  /* width: 70%; */
-  height: 80vh;
+  width: calc(100% - 560px);
+  height: calc(100vh - 154px);
   position: relative;
   border-left: 1px solid grey;
   border-bottom: 1px solid grey;
@@ -24,8 +24,8 @@ body {
 
 .timer {
   left: 560px;
-  width: calc(100% - 560px);
-  height: 20vh;
+  max-width: 380px;
+  height: 154px;
   position: relative;
   border-left: 1px solid grey;
 }
