@@ -8,7 +8,7 @@
 // @grant        none
 // ==/UserScript==
 
-setTimeout(function removeFromPage() {
+setTimeout(function removeFromPage () {
   if (document.querySelector('#sfcnt')) {
     const style = document.createElement('STYLE');
     const head = document.getElementsByTagName('HEAD')[0];
@@ -43,6 +43,6 @@ setTimeout(function removeFromPage() {
     style.appendChild(textnode);
     head.appendChild(style);
   } else {
-    setTimeout(removeFromPage, 500);
+    setTimeout(removeFromPage, 500)
   }
-}, 500);
+}, 500)

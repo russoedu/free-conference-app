@@ -9,8 +9,7 @@
   "env": {
     "node" : true,
     "browser": true,
-    "mocha": true,
-    "react": true
+    "mocha": true
   },
   "rules": {
     "no-unused-expressions": "off",

@@ -1,4 +1,4 @@
-setTimeout(function removeFromPage() {
+setTimeout(function removeFromPage () {
   if (document.getElementsByTagName('HEAD')) {
     const style = document.createElement('STYLE')
     const head = document.getElementsByTagName('HEAD')[0]
