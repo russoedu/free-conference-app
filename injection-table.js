@@ -10,10 +10,10 @@ setTimeout(function removeFromPage() {
     #docs-menubars, #docs-toolbar-wrapper {
       visibility: hidden
     }#docs-bars {
-      height:66px
+      height:33px
     }
     .docs-material #docs-header .docs-titlebar-buttons {
-      padding: 0 56px 0 30px
+      padding-right: 56px
     }
     #docs-header-container{
       position: absolute
