@@ -10,8 +10,6 @@ function createWindow () {
       webviewTag: true
     }
   })
-  const test = Menu.getApplicationMenu()
-  console.log(test.items[4].submenu.items[0].click.toString())
 
   const menu = Menu.buildFromTemplate(
     [
