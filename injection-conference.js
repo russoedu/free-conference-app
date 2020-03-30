@@ -48,11 +48,11 @@ setTimeout(async function waitParticipantsPanel () {
   participantsList = await getParticipantsList()
   if (document.getElementsByClassName(participantClassName)) {
     const participants = document.getElementsByClassName(participantClassName)
-    participants.forEach(element => {
-      const splited = element.innerHTML.split(participantNameSeparator)[0]
+    participants.forEach(participant => {
+      const splited = participant.innerHTML.split(participantNameSeparator)[0]
       participantsList.forEach(translation => {
         if (splited === translation.Phone) {
-          element.innerHTML = `${translation.Phone}${participantNameSeparator}${translation.Name}`
+          participant.innerHTML = `${translation.Phone}${participantNameSeparator}${translation.Name}`
         }
       })
     })
@@ -67,15 +67,17 @@ setTimeout(async function waitParticipantsPanel () {
  */
 setTimeout(async function waitSpeaker () {
   if (document.getElementsByClassName(speakerClassName)) {
-    const speaker = document.getElementsByClassName(speakerClassName)[0]
-    participantsList.forEach(translation => {
-      const splited = speaker.innerHTML.split(speakerNameSeparator)[0]
-      if (splited === translation.Phone) {
-        speaker.innerHTML = `${translation.Phone}${speakerNameSeparator}${translation.Name}`
-      }
+    const speakers = document.getElementsByClassName(speakerClassName)
+    speakers.forEach(speaker => {
+      participantsList.forEach(translation => {
+        const splited = speaker.innerHTML.split(speakerNameSeparator)[0]
+        if (splited === translation.Phone) {
+          speaker.innerHTML = `${translation.Phone}${speakerNameSeparator}${translation.Name}`
+        }
+      })
     })
-    setTimeout(waitSpeaker, 900)
+    setTimeout(waitSpeaker, 1000)
   } else {
-    setTimeout(waitSpeaker, 800)
+    setTimeout(waitSpeaker, 1000)
   }
-}, 5200)
+}, 5000)
