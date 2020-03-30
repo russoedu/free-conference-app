@@ -1,7 +1,7 @@
 const config = require('./config')
 
 const participantsSelector = '#app > div:nth-child(1) > div > div > div.call-sidebar > div.participant-list > div'
-const speakerSelector = '#app > div:nth-child(1) > div > div > div.call-main > div:nth-child(3) > div.call-media.call-media--overlay.call-media--current > div > div > div'
+const speakerSelector = '#app > div:nth-child(1) > div > div > div.call-main > div:nth-child(3) > div.call-media.call-media--overlay > div > div > div'
 const participantClassName = 'item__label'
 const speakerClassName = 'avatar__full-name'
 const participantNameSeparator = ` ${config.participantNameSeparator} `

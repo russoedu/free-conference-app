@@ -2,7 +2,7 @@ const config = require('./config')
 const { ipcRenderer, remote } = require('electron')
 
 const tabeleInnerHTML = `<webview id="table" src="${config.spreadsheetUrl}" autosize="on" style="width:calc(560px + 55px); height:100vh;" preload="./injection-table.js"></webview>`
-const conferenceInnerHTML = `<webview id="conference" src="https://hello.freeconference.com/conf/call/${config.conferenceId}" preload="./injection-conference.js" autosize="on" style="width:100%; height:calc(100vh - 154px)"></webview>`
+const conferenceInnerHTML = `<webview id="conference" src="https://hello.freeconference.com/conf/call/${config.conferenceId}" preload="./injection-conference.js" autosize="on" style="width:100%; height:calc(100vh - 154px)" useragent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36"></webview>`
 const timerInnerHTML = '<webview id="timer" src="https://www.google.com/search?q=timer" preload="./injection-timer.js" autosize="on" style="height:154px"></webview>'
 const generalAlert = '<div class="preferences"><h1>Please fill the preferences and reload the app!</h1><button id="reload-button" class="button"></button>'
 

@@ -1,28 +1,11 @@
-// const electron = require('electron')
 const { Menu, app } = require('electron')
-// const app = electron.app
 const path = require('path')
 const ElectronPreferences = require('electron-preferences')
-
-const menu = Menu.buildFromTemplate(
-  [
-    {
-      label: 'Window',
-      role: 'window',
-      submenu: [
-        {
-          label: 'Close',
-          accelerator: 'CmdOrCtrl+W',
-          role: 'close'
-        }
-      ]
-    }
-  ]
-)
+const AppMenu = require('./menu')
 
 const preferences = new ElectronPreferences(
   {
-    menuBar: menu,
+    menuBar: Menu.buildFromTemplate(AppMenu.preferencesMenu()),
     dataStore: path.resolve(app.getPath('userData'), 'preferences.json'),
     defaults: {
       general: {
