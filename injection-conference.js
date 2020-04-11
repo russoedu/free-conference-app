@@ -1,7 +1,7 @@
 const config = require('./config')
 
-const participantClassName = 'item__label'
-const speakerClassName = 'avatar__full-name'
+const participantSelector = '#participantName'
+const speakerSelector = 'avatar__full-name'
 const participantNameSeparator = ` ${config.participantNameSeparator} `
 const speakerNameSeparator = `${config.speakerNameSeparator}`
 
@@ -46,13 +46,13 @@ function getParticipantsList () {
  */
 setTimeout(async function waitParticipantsPanel () {
   participantsList = await getParticipantsList()
-  if (document.getElementsByClassName(participantClassName)) {
-    const participants = document.getElementsByClassName(participantClassName)
+  if (document.querySelector(participantSelector)) {
+    const participants = document.querySelectorAll(participantSelector)
     participants.forEach(participant => {
-      const splited = participant.innerHTML.split(participantNameSeparator)[0]
+      const splited = participant.innerText.split(participantNameSeparator)[0]
       participantsList.forEach(translation => {
         if (splited === translation.Phone) {
-          participant.innerHTML = `${translation.Phone}${participantNameSeparator}${translation.Name}`
+          participant.innerText = `${translation.Phone}${participantNameSeparator}${translation.Name}`
         }
       })
     })
@@ -66,8 +66,8 @@ setTimeout(async function waitParticipantsPanel () {
  * Add names to the speaker
  */
 setTimeout(async function waitSpeaker () {
-  if (document.getElementsByClassName(speakerClassName)) {
-    const speakers = document.getElementsByClassName(speakerClassName)
+  if (document.getElementsByClassName(speakerSelector)) {
+    const speakers = document.getElementsByClassName(speakerSelector)
     speakers.forEach(speaker => {
       participantsList.forEach(translation => {
         const splited = speaker.innerHTML.split(speakerNameSeparator)[0]
