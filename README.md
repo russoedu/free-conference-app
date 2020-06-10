@@ -36,3 +36,6 @@ The required data are:
 ![configurations](./media/preferences.png)
 
 The app is ready for your meetings!
+
+# Improvements
+- [ ] Compile with https://azure.microsoft.com/en-gb/services/devops/pipelines/
